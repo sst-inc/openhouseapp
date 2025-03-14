@@ -1,4 +1,4 @@
-package org.sstinc.openhouseapp2024
+package org.sstinc.openhouseapp
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
