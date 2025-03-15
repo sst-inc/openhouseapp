@@ -9,6 +9,7 @@ import {
   FlatList,
   SafeAreaView,
   Platform,
+  BackHandler,
   Dimensions,
 } from 'react-native';
 import Svg, {

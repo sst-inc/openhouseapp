@@ -12,6 +12,8 @@ import {
   SafeAreaView,
   Dimensions,
   Image,
+  BackHandler,
+  AppState,
 } from 'react-native';
 import Svg, {Circle, Path, Line, G, Rect} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
@@ -64,6 +66,7 @@ const QRCodeScanner = ({navigation}) => {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
 
   LogBox.ignoreAllLogs();
+
   useEffect(() => {
     (async () => {
       const granted = await requestCameraPermission();
@@ -92,7 +95,6 @@ const QRCodeScanner = ({navigation}) => {
     return () => {
       if (cameraRef.current) {
         setIsPreviewActive(false);
-        cameraRef.current.stopPreview();
       }
     };
   }, []);
@@ -104,7 +106,7 @@ const QRCodeScanner = ({navigation}) => {
         JSON.stringify(scannedDataArray),
       );
     })();
-  }, [scannedDataArray]); // Save to AsyncStorage whenever scannedDataArray changes
+  }, [scannedDataArray]);
 
   if (hasPermission === null) {
     return (

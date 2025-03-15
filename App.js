@@ -12,7 +12,7 @@ import {
   Alert,
   BackHandler,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useRoute} from '@react-navigation/native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -229,17 +229,13 @@ function CustomDrawerContent(props) {
 
 const App = () => {
   LogBox.ignoreAllLogs();
-  useEffect(() => {
+  /*   useEffect(() => {
     const backAction = () => {
-      Alert.alert('Hold on!', 'Are you sure you want to go back?', [
-        {
-          text: 'Cancel',
-          onPress: () => null,
-          style: 'cancel',
-        },
-        {text: 'YES', onPress: () => BackHandler.exitApp()},
-      ]);
-      return true;
+      if (route.name === 'QRCode') {
+        navigation.navigate('Stamps');
+        return true;
+      }
+      return false;
     };
 
     const backHandler = BackHandler.addEventListener(
@@ -248,7 +244,7 @@ const App = () => {
     );
 
     return () => backHandler.remove();
-  }, []);
+  }, []); */
   return (
     <NavigationContainer
       onStateChange={state => console.log('New state is', state)}>
@@ -269,7 +265,7 @@ const App = () => {
         <Drawer.Screen
           name="Home"
           component={HomeScreen}
-          backBehavior="firstRoute"
+          backBehavior="history"
           options={{
             drawerLabel: 'Home',
             drawerItemStyle: {height: 0},
@@ -279,7 +275,7 @@ const App = () => {
         <Drawer.Screen
           name="Stamps"
           component={Stamps}
-          backBehavior="firstRoute"
+          backBehavior="history"
           options={{
             drawerLabel: ({focused, color}) => (
               <View
@@ -334,7 +330,7 @@ const App = () => {
         <Drawer.Screen
           name="QRCode"
           component={QRCodeScanner}
-          backBehavior="firstRoute"
+          backBehavior="none"
           options={{
             drawerLabel: 'QR Code',
             drawerItemStyle: {height: 0},
@@ -343,7 +339,7 @@ const App = () => {
         />
         <Drawer.Screen
           name="BoothInfo"
-          backBehavior="firstRoute"
+          backBehavior="history"
           component={BoothInfo}
           options={{
             drawerLabel: ({focused, color}) => (
@@ -399,7 +395,7 @@ const App = () => {
         />
         <Drawer.Screen
           name="Events"
-          backBehavior="firstRoute"
+          backBehavior="history"
           component={EventsPage}
           options={{
             drawerLabel: ({focused, color}) => (
@@ -497,7 +493,7 @@ const App = () => {
         <Drawer.Screen
           name="Quick Links"
           component={QuickLinks}
-          backBehavior="firstRoute"
+          backBehavior="history"
           options={{
             drawerLabel: ({focused, color}) => (
               <View
@@ -563,7 +559,7 @@ const App = () => {
         <Drawer.Screen
           name="Credits"
           component={Credits}
-          backBehavior="firstRoute"
+          backBehavior="history"
           options={{
             drawerLabel: ({focused}) => (
               <View style={{backgroundColor: 'rgba(0, 0, 0, 0)'}}>
@@ -633,7 +629,7 @@ const App = () => {
 };
 
 const HomeScreen = ({navigation}) => {
-  const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
+  /* const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
   const AnimatedImageBackground =
     Animated.createAnimatedComponent(ImageBackground);
 
@@ -643,14 +639,14 @@ const HomeScreen = ({navigation}) => {
       duration: 1000,
       useNativeDriver: true,
     }).start();
-  }, [fadeAnim]);
+  }, [fadeAnim]); */
 
   function whereToGo() {
-    Animated.timing(fadeAnim, {
+    /*Animated.timing(fadeAnim, {
       toValue: 0,
       duration: 100,
       useNativeDriver: true,
-    }).start(() => navigation.navigate('Events')); // Navigate after the animation completes
+    }).start(() => */ navigation.navigate('Events') /* ) */; // Navigate after the animation completes
     async function onCreateTriggerNotification() {
       await notifee.requestPermission();
       const date = new Date('2024-05-25T12:30:00');
@@ -676,9 +672,9 @@ const HomeScreen = ({navigation}) => {
   }
   return (
     <View style={styles.container}>
-      <AnimatedImageBackground
+      <ImageBackground
         source={require('./assets/landingPage.png')}
-        style={[styles.imageBackground, {opacity: fadeAnim}]}>
+        style={[styles.imageBackground /*  {opacity: fadeAnim} */]}>
         <TouchableOpacity
           style={{
             width: '80%',
@@ -740,7 +736,7 @@ const HomeScreen = ({navigation}) => {
             borderColor: '#356AA9',
           }}
         />
-      </AnimatedImageBackground>
+      </ImageBackground>
     </View>
   );
 };
