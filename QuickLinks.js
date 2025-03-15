@@ -22,7 +22,7 @@ const QuickLinks = ({navigation}) => {
     {
       id: 4,
       title: 'Post-Event Survey Form',
-      url: 'https://docs.google.com/forms/d/e/1FAIpQLScS2uDSYRciFqyfj0ZXXHMZPUnCTD_5ztUtuvGYrZ_ri-z6dg/viewform',
+      url: 'https://docs.google.com/forms/d/e/1FAIpQLSeE28VqM37eeiZ_QsxxlRisBQ9CD5yHMz8rmN9iunXqsTYXyg/closedform',
     },
     {
       id: 1,
@@ -37,7 +37,7 @@ const QuickLinks = ({navigation}) => {
     {
       id: 3,
       title: 'SST Open House Website',
-      url: 'https://sites.google.com/sst.edu.sg/2024sstopenhouse/open-house-programmes',
+      url: 'https://sites.google.com/sst.edu.sg/2025sstopenhouse/open-house-programmes?authuser=0',
     },
     {
       id: 5,
