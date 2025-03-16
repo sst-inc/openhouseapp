@@ -1,4 +1,4 @@
-package org.sstinc.openhouseapp
+package org.sstinc.openhouseapp2024
 
 import android.app.Application
 import com.facebook.react.PackageList

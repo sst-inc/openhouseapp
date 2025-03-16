@@ -450,7 +450,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.sstinc.openhouseapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSTOpenHouse2024.app/SSTOpenHouse2024";
 			};
@@ -475,7 +475,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.sstinc.openhouseapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSTOpenHouse2024.app/SSTOpenHouse2024";
 			};
@@ -491,7 +491,7 @@
 				DEVELOPMENT_TEAM = 7K6ZTDFM48;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SSTOpenHouse2024/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "SST Open House 2024";
+				INFOPLIST_KEY_CFBundleDisplayName = "SST Open House";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,7 +503,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.sstinc.openhouseapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
 				PRODUCT_NAME = SSTOpenHouse2024;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -525,7 +525,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7K6ZTDFM48;
 				INFOPLIST_FILE = SSTOpenHouse2024/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "SST Open House 2024";
+				INFOPLIST_KEY_CFBundleDisplayName = "SST Open House";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -537,7 +537,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.sstinc.openhouseapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sstinc.openhouseapp2024";
 				PRODUCT_NAME = SSTOpenHouse2024;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

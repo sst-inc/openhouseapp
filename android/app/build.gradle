@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdkVersion rootProject.ext.compileSdkVersion // Corrected line
 
-    namespace "org.sstinc.openhouseapp"
+    namespace "org.sstinc.openhouseapp2024"
     defaultConfig {
-        applicationId "org.sstinc.openhouseapp"
+        applicationId "org.sstinc.openhouseapp2024"
         minSdkVersion rootProject.ext.minSdkVersion
         missingDimensionStrategy 'react-native-camera', 'mlkit' // Inserted line
         targetSdkVersion rootProject.ext.targetSdkVersion
