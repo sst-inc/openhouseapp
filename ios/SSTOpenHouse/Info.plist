@@ -44,7 +44,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>SST Open House 2024 requires Camera access to scan the stamp QR Codes.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Regular.ttf</string>
