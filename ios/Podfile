@@ -25,7 +25,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'SSTOpenHouse2024' do
+target 'SSTOpenHouse' do
   config = use_native_modules!
 
   use_react_native!(
@@ -40,7 +40,7 @@ target 'SSTOpenHouse2024' do
   )
 
 
-  target 'SSTOpenHouse2024Tests' do
+  target 'SSTOpenHouseTests' do
     inherit! :complete
     # Pods for testing
   end
