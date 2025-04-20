@@ -627,7 +627,6 @@ const Checklist = ({navigation}) => {
     })();
   }, [checkedBooths]);
   
-  // Sample placeholder data for booths organized by block and floor
   const boothsByLocation = {
     'Block A': {
       'L1 (Ground Floor)': [
@@ -681,7 +680,6 @@ const Checklist = ({navigation}) => {
     },
   };
 
-  // Toggle a booth's checked state
   const toggleBooth = (boothId) => {
     setCheckedBooths(prev => ({
       ...prev,
@@ -691,7 +689,6 @@ const Checklist = ({navigation}) => {
 
   LogBox.ignoreAllLogs();
 
-  // Render stamp checkbox for checked/unchecked states
   const renderStampCheckbox = (isChecked) => {
     if (isChecked) {
       return (
@@ -739,6 +736,7 @@ const Checklist = ({navigation}) => {
         <Svg
           width="36"
           height="36"
+          
           viewBox="0 0 72 72"
           fill="none">
           <Rect width="72" height="72" fill="#356AA9" />
