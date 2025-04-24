@@ -727,7 +727,6 @@ const BoothInfoParentPage = ({navigation}) => {
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
-                  <View style={{marginTop: '32%'}} />
                 </View>
               ) : (
                 <View
