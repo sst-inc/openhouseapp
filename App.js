@@ -34,6 +34,7 @@ import EventsPage from './Events';
 import QuickLinks from './QuickLinks';
 import Credits from './secretCreds';
 import {LogBox} from 'react-native';
+import {Checklist} from './Checklist';
 import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
 
 const Drawer = createDrawerNavigator();
@@ -167,7 +168,7 @@ const App = () => {
         />
         <Drawer.Screen
           name="Stamps"
-          component={Stamps}
+          component={Checklist}
           backBehavior="history"
           options={{
             drawerLabel: ({focused, color}) => (

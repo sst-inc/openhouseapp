@@ -18,7 +18,6 @@ import Svg, {G, Path, Defs, ClipPath, Rect, Line} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import SearchBar from 'react-native-search-bar';
 import MainStream from './MainStream';
 import CCA from './CCA';
 import AppliedSub from './AppliedSub';
@@ -552,28 +551,35 @@ const BoothInfoParentPage = ({navigation}) => {
               </View>
               {isSearchBarVisible && (
                 <Animated.View style={{transform: [{translateX: searchAnim}]}}>
-                  <View
-                    style={{
-                      marginTop: 20,
-                      height: Platform.OS === 'ios' ? 51 : 41,
-                      width: '90%',
-                      marginLeft: '5%',
-                      borderRadius: 20,
-                      overflow: 'hidden',
-                    }}>
-                    <SearchBar
+                  <View style={styles.customSearchBarContainer}>
+                    <TextInput
+                      style={styles.customSearchBarInput}
                       placeholder="Search"
+                      placeholderTextColor="#979797"
+                      value={searchTerm}
                       onChangeText={handleChange}
-                      onSearchButtonPress={() => {
-                        const results = search(searchTerm);
-                        console.log('Search results:', results);
-                      }}
-                      onCancelButtonPress={() => setSearchBarVisible(false)}
-                      tintColor="black"
-                      textColor="black"
-                      textFieldBackgroundColor="rgba(170, 170, 170, 1)" // grey, slightly transparent
-                      hideBackground={true}
+                      onSubmitEditing={() => search(searchTerm)}
+                      returnKeyType="search"
+                      autoFocus
                     />
+                    {searchTerm.length > 0 && (
+                      <TouchableOpacity
+                        onPress={() => setSearchTerm('')}
+                        style={styles.clearIconContainer}>
+                        <Svg
+                          width="28"
+                          height="28"
+                          viewBox="0 0 28 28"
+                          fill="none">
+                          <Path
+                            d="M7 7L21 21M21 7L7 21"
+                            stroke="#979797"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                          />
+                        </Svg>
+                      </TouchableOpacity>
+                    )}
                   </View>
                 </Animated.View>
               )}
@@ -796,6 +802,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '7%',
+  },
+  customSearchBarContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#E3E3E8',
+    borderRadius: 16,
+    paddingHorizontal: 20,
+    height: 56,
+    width: '90%',
+    marginLeft: '5%',
+    marginTop: 20,
+    position: 'relative',
+  },
+  customSearchBarInput: {
+    flex: 1,
+    fontSize: 28,
+    fontWeight: '600',
+    color: '#979797',
+    fontFamily: 'Prototype',
+    backgroundColor: 'transparent',
+    paddingVertical: 0,
+  },
+  clearIconContainer: {
+    padding: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
