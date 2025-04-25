@@ -28,7 +28,7 @@ import Svg, {
   ClipPath,
   Mask,
 } from 'react-native-svg';
-import {Stamps, QRCodeScanner} from './Stamps';
+// import {Stamps, QRCodeScanner} from './Stamps';
 import {BoothInfo} from './boothScreens/BoothInfo';
 import EventsPage from './Events';
 import QuickLinks from './QuickLinks';
@@ -167,7 +167,7 @@ const App = () => {
           }}
         />
         <Drawer.Screen
-          name="Stamps"
+          name="Checklist"
           component={Checklist}
           backBehavior="history"
           options={{
@@ -210,7 +210,7 @@ const App = () => {
                     lineHeight: 24,
                     marginRight: 50,
                   }}>
-                  Stamps
+                  Checklist
                 </Text>
               </View>
             ),
@@ -221,7 +221,7 @@ const App = () => {
             },
           }}
         />
-        <Drawer.Screen
+        {/*         <Drawer.Screen
           name="QRCode"
           component={QRCodeScanner}
           backBehavior="none"
@@ -230,7 +230,7 @@ const App = () => {
             drawerItemStyle: {height: 0},
             headerShown: false,
           }}
-        />
+        /> */}
         <Drawer.Screen
           name="BoothInfo"
           backBehavior="history"

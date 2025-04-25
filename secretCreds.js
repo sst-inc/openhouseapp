@@ -46,7 +46,7 @@ const sigmas = [
   {
     id: 6,
     name: 'Aathithya Jegatheesan',
-    position: 'Mental support',
+    position: 'Consultant',
   },
 ];
 
