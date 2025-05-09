@@ -1,7 +1,4 @@
 import React, {useState, useEffect, useRef, createContext} from 'react';
-import {Alert, Platform} from 'react-native';
-import {PermissionsIOS, PermissionsAndroid} from 'react-native';
-import {RNCamera} from 'react-native-camera';
 import {
   View,
   Text,
@@ -16,11 +13,14 @@ import {
   AppState,
 } from 'react-native';
 import Svg, {Circle, Path, Line, G, Rect} from 'react-native-svg';
-import LinearGradient from 'react-native-linear-gradient';
-import {BlurView} from '@react-native-community/blur';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {LogBox} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import BlockA from './checklist/blockA';
+import BlockB from './checklist/blockB';
+import BlockC from './checklist/blockC';
+import BlockD from './checklist/blockD';
+import AppliedDetails from './boothScreens/AppliedDetails';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -79,7 +79,7 @@ function ChecklistHome({navigation}) {
                   padding: 20,
                   marginBottom: 20,
                 }}
-                onPress={() => navigation.navigate('DetailedChecklist')}>
+                onPress={() => navigation.navigate('BlockA')}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                     <Path
@@ -114,7 +114,7 @@ function ChecklistHome({navigation}) {
                   padding: 20,
                   marginBottom: 20,
                 }}
-                onPress={() => navigation.navigate('DetailedChecklist')}>
+                onPress={() => navigation.navigate('BlockB')}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                     <Path
@@ -149,7 +149,7 @@ function ChecklistHome({navigation}) {
                   padding: 20,
                   marginBottom: 20,
                 }}
-                onPress={() => navigation.navigate('DetailedChecklist')}>
+                onPress={() => navigation.navigate('BlockC')}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                     <Path
@@ -184,9 +184,7 @@ function ChecklistHome({navigation}) {
                   padding: 20,
                   marginBottom: 20,
                 }}
-                onPress={() =>
-                  navigation.navigate('DetailedChecklist', {option: num})
-                }>
+                onPress={() => navigation.navigate('BlockD')}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                     <Path
@@ -219,219 +217,17 @@ function ChecklistHome({navigation}) {
   );
 }
 
-function DetailedChecklist({navigation, route}) {
-  const [checkedBooths, setCheckedBooths] = useState({});
-  const blockName = route?.params?.option || 'Block A';
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const storedBooths = await AsyncStorage.getItem('checkedBooths');
-        if (storedBooths) {
-          setCheckedBooths(JSON.parse(storedBooths));
-        }
-      } catch (error) {
-        console.error('Error loading checked booths:', error);
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        await AsyncStorage.setItem(
-          'checkedBooths',
-          JSON.stringify(checkedBooths),
-        );
-      } catch (error) {
-        console.error('Error saving checked booths:', error);
-      }
-    })();
-  }, [checkedBooths]);
-
-  const boothsByLocation = {
-    'Block A': {
-      'Level 1': [
-        {id: 'a1-1', name: 'Atrium Exhibition', location: 'Main Atrium'},
-        {id: 'a1-2', name: 'Athletics Booth', location: 'Sports Hall Entrance'},
-        {id: 'a1-3', name: 'Fencing Display', location: 'Dance Studio'},
-        {id: 'a1-4', name: 'Guitar Ensemble', location: 'Performance Area'},
-      ],
-      'Level 2': [
-        {id: 'a2-1', name: 'Mathematics Exhibition', location: 'Room A2-01'},
-        {id: 'a2-2', name: 'Physics Lab', location: 'Room A2-05'},
-      ],
-      'Level 3': [
-        {id: 'a3-1', name: 'Mother Tongue Languages', location: 'Room A3-02'},
-        {id: 'a3-2', name: 'English Workshop', location: 'Room A3-07'},
-      ],
-    },
-    'Block B': {
-      'Level 1': [
-        {id: 'b1-1', name: 'School Reception', location: 'Main Entrance'},
-        {id: 'b1-2', name: 'Central Courtyard', location: 'Outdoor Area'},
-      ],
-      'Level 2': [
-        {id: 'b2-1', name: 'Info Counter', location: 'Student Services Hub'},
-        {id: 'b2-2', name: 'Student Services', location: 'Room B2-03'},
-      ],
-    },
-    'Block C': {
-      'Level 1': [
-        {id: 'c1-1', name: 'Chemistry Lab', location: 'Room C1-02'},
-        {id: 'c1-2', name: 'Biology Lab', location: 'Room C1-05'},
-        {id: 'c1-3', name: 'Biotech Lab', location: 'Room C1-07'},
-      ],
-      'Level 2': [
-        {id: 'c2-1', name: 'Engineering Lab', location: 'Room C2-03'},
-        {id: 'c2-2', name: 'ADMT Studio', location: 'Room C2-06'},
-        {id: 'c2-3', name: 'Maker Lab', location: 'Room C2-08'},
-      ],
-      'Level 3': [
-        {id: 'c3-1', name: 'SST Inc HQ - Computing+', location: 'Room C3-01'},
-        {
-          id: 'c3-2',
-          name: 'MPR3 - Alumni Panel',
-          location: 'Multi-Purpose Room 3',
-        },
-        {id: 'c3-3', name: 'Robotics Room', location: 'Room C3-05'},
-        {id: 'c3-4', name: 'LO1 - PforSST', location: 'Learning Office 1'},
-      ],
-    },
-  };
-
-  const toggleBooth = boothId => {
-    setCheckedBooths(prev => ({
-      ...prev,
-      [boothId]: !prev[boothId],
-    }));
-  };
-
-  const renderStampCheckbox = isChecked => {
-    return (
-      <TouchableOpacity style={styles.stampCheckboxContainer}>
-        {isChecked ? (
-          <Svg width={32} height={32} viewBox="0 0 32 32" fill="none">
-            <Circle cx={16} cy={16} r={16} fill="#356AA9" />
-            <Path
-              d="M10 17l4 4 8-8"
-              stroke="#fff"
-              strokeWidth={3}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </Svg>
-        ) : (
-          <Svg width={32} height={32} viewBox="0 0 32 32" fill="none">
-            <Circle
-              cx={16}
-              cy={16}
-              r={15}
-              stroke="#356AA9"
-              strokeWidth={2}
-              fill="#fff"
-            />
-          </Svg>
-        )}
-      </TouchableOpacity>
-    );
-  };
-
-  const blockFloors = boothsByLocation[blockName] || {};
-
-  return (
-    <View style={{flex: 1}}>
-      <ImageBackground
-        source={require('./assets/background.png')}
-        style={{flex: 1, width: '100%', height: '100%'}}>
-        <SafeAreaView style={{flex: 1}}>
-          {/* Arrow row */}
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginTop: 18,
-              marginBottom: 0,
-              paddingHorizontal: 18,
-            }}>
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              style={styles.arrowBackBtn}>
-              <Image
-                source={require('./assets/boothInfo/arrow.png')}
-                style={{width: 36, height: 36}}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-          </View>
-          {/* Block X and hamburger row */}
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: 10,
-              paddingHorizontal: 18,
-            }}>
-            <Text
-              style={[
-                styles.detailedBlockTitle,
-                {textAlign: 'left', marginLeft: 0},
-              ]}>
-              Block {blockName.slice(-1)}
-            </Text>
-            <TouchableOpacity
-              style={styles.hamburgerIconPress}
-              onPress={() => navigation.openDrawer()}>
-              <Svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="36"
-                height="36"
-                viewBox="0 0 48 48"
-                fill="none">
-                <Path
-                  d="M42.5 24.25C42.5 24.8467 42.2629 25.419 41.841 25.841C41.419 26.2629 40.8467 26.5 40.25 26.5H7.25C6.65326 26.5 6.08097 26.2629 5.65901 25.841C5.23705 25.419 5 24.8467 5 24.25C5 23.6533 5.23705 23.081 5.65901 22.659C6.08097 22.2371 6.65326 22 7.25 22H40.25C40.8467 22 41.419 22.2371 41.841 22.659C42.2629 23.081 42.5 23.6533 42.5 24.25ZM7.25 14.5H40.25C40.8467 14.5 41.419 14.2629 41.841 13.841C42.2629 13.419 42.5 12.8467 42.5 12.25C42.5 11.6533 42.2629 11.081 41.841 10.659C41.419 10.2371 40.8467 10 40.25 10H7.25C6.65326 10 6.08097 10.2371 5.65901 10.659C5.23705 11.081 5 11.6533 5 12.25C5 12.8467 5.23705 13.419 5.65901 13.841C6.08097 14.2629 6.65326 14.5 7.25 14.5ZM40.25 34H7.25C6.65326 34 6.08097 34.2371 5.65901 34.659C5.23705 35.081 5 35.6533 5 36.25C5 36.8467 5.23705 37.419 5.65901 37.841C6.08097 38.2629 6.65326 38.5 7.25 38.5H40.25C40.8467 38.5 41.419 38.2629 41.841 37.841C42.2629 37.419 42.5 36.8467 42.5 36.25C42.5 35.6533 42.2629 35.081 41.841 34.659C41.419 34.2371 40.8467 34 40.25 34Z"
-                  fill="#1C1C12"
-                />
-              </Svg>
-            </TouchableOpacity>
-          </View>
-          <ScrollView
-            style={{flex: 1}}
-            contentContainerStyle={{paddingBottom: 40}}>
-            {Object.entries(blockFloors).map(([level, booths]) => (
-              <View key={level} style={{marginBottom: 24}}>
-                <Text style={styles.levelHeader}>{level}</Text>
-                {booths.map(booth => (
-                  <TouchableOpacity
-                    key={booth.id}
-                    style={styles.detailedBoothRow}
-                    onPress={() => toggleBooth(booth.id)}>
-                    <View style={{flex: 1}}>
-                      <Text style={styles.detailedBoothName}>{booth.name}</Text>
-                      <Text style={styles.detailedBoothLocation}>
-                        {booth.location}
-                      </Text>
-                    </View>
-                    {renderStampCheckbox(checkedBooths[booth.id])}
-                  </TouchableOpacity>
-                ))}
-              </View>
-            ))}
-          </ScrollView>
-        </SafeAreaView>
-      </ImageBackground>
-    </View>
-  );
-}
-
 const Checklist = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="ChecklistHome">
       <Stack.Screen name="ChecklistHome" component={ChecklistHome} />
-      <Stack.Screen name="DetailedChecklist" component={DetailedChecklist} />
+      <Stack.Screen name="BlockA" component={BlockA} />
+      <Stack.Screen name="BlockB" component={BlockB} />
+      <Stack.Screen name="BlockC" component={BlockC} />
+      <Stack.Screen name="BlockD" component={BlockD} />
+      <Stack.Screen name="BoothDetail" component={AppliedDetails} />
     </Stack.Navigator>
   );
 };

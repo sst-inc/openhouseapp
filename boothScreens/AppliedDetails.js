@@ -62,8 +62,7 @@ const AppliedDetails = ({route}) => {
                   justifyContent: 'center',
                   marginTop: 10,
                 }}>
-                {/* update with image once shared */}
-                {/*                 <ReactNativeZoomableView
+                <ReactNativeZoomableView
                   style={{width: windowWidth * 0.9}}
                   maxZoom={2.5}
                   minZoom={1}
@@ -76,7 +75,7 @@ const AppliedDetails = ({route}) => {
                     style={{width: '100%', height: 252}}
                     resizeMode="contain"
                   />
-                </ReactNativeZoomableView> */}
+                </ReactNativeZoomableView>
               </View>
               <View style={{marginTop: 10, marginLeft: '5%', width: '85%'}}>
                 <View
