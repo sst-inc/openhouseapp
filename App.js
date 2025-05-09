@@ -122,23 +122,6 @@ function CustomDrawerContent(props) {
 }
 
 const App = () => {
-  LogBox.ignoreAllLogs();
-  /*   useEffect(() => {
-    const backAction = () => {
-      if (route.name === 'QRCode') {
-        navigation.navigate('Stamps');
-        return true;
-      }
-      return false;
-    };
-
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      backAction,
-    );
-
-    return () => backHandler.remove();
-  }, []); */
   return (
     <NavigationContainer
       onStateChange={state => console.log('New state is', state)}>
@@ -155,6 +138,12 @@ const App = () => {
             borderColor: 'white',
           },
           headerShown: false,
+          drawerItemStyle: {
+            borderRadius: 0, // Remove rounded corners that can show highlight
+          },
+          drawerActiveBackgroundColor: 'transparent', // Remove the active background color
+          drawerActiveTintColor: '#000', // Keep text color the same when active
+          drawerInactiveTintColor: '#000', // Keep text color the same when inactive
         }}>
         <Drawer.Screen
           name="Home"
@@ -523,24 +512,8 @@ const App = () => {
 };
 
 const HomeScreen = ({navigation}) => {
-  /* const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
-  const AnimatedImageBackground =
-    Animated.createAnimatedComponent(ImageBackground);
-
-  useEffect(() => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-  }, [fadeAnim]); */
-
   function whereToGo() {
-    /*Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 100,
-      useNativeDriver: true,
-    }).start(() => */ navigation.navigate('Events') /* ) */; // Navigate after the animation completes
+    navigation.navigate('Events') /* ) */; // Navigate after the animation completes
     async function onCreateTriggerNotification() {
       await notifee.requestPermission();
       const date = new Date('2024-05-25T12:30:00');
