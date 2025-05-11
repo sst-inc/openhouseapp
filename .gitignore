@@ -68,3 +68,7 @@ yarn-error.log
 
 # testing
 /coverage
+
+# firebase
+.firebaseConfig.js
+firebaseConfig.js

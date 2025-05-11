@@ -36,6 +36,7 @@ import Credits from './secretCreds';
 import {LogBox} from 'react-native';
 import {Checklist} from './Checklist';
 import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
+import Chatbot from './chatbot';
 
 const Drawer = createDrawerNavigator();
 
@@ -210,6 +211,61 @@ const App = () => {
             },
           }}
         />
+        {/*         <Drawer.Screen
+          name="Chatbot"
+          component={Chatbot}
+          backBehavior="history"
+          options={{
+            drawerLabel: ({focused, color}) => (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  gap: 7,
+                  marginLeft: 10,
+                  flex: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignSelf: 'center',
+                  width: 300,
+                  height: 45,
+                  padding: 2,
+                  marginLeft: -17,
+                  backgroundColor: '#D3585E',
+                  marginTop: 20,
+                }}>
+                <Svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="27"
+                  height="24"
+                  viewBox="0 0 27 24"
+                  fill="none">
+                  <Path
+                    d="M22.0142 21C22.0142 21.1989 21.9351 21.3897 21.7945 21.5303C21.6538 21.671 21.4631 21.75 21.2642 21.75H4.76416C4.56525 21.75 4.37448 21.671 4.23383 21.5303C4.09318 21.3897 4.01416 21.1989 4.01416 21C4.01416 20.8011 4.09318 20.6103 4.23383 20.4697C4.37448 20.329 4.56525 20.25 4.76416 20.25H21.2642C21.4631 20.25 21.6538 20.329 21.7945 20.4697C21.9351 20.6103 22.0142 20.8011 22.0142 21ZM22.0142 13.5V17.25C22.0142 17.6478 21.8561 18.0294 21.5748 18.3107C21.2935 18.592 20.912 18.75 20.5142 18.75H5.51416C5.11634 18.75 4.7348 18.592 4.4535 18.3107C4.1722 18.0294 4.01416 17.6478 4.01416 17.25V13.5C4.01416 13.1022 4.1722 12.7206 4.4535 12.4393C4.7348 12.158 5.11634 12 5.51416 12H10.8045L9.33166 5.12906C9.23787 4.69171 9.24306 4.23892 9.34686 3.80383C9.45066 3.36875 9.65043 2.96238 9.93156 2.61447C10.2127 2.26656 10.5681 1.98592 10.9717 1.79309C11.3753 1.60026 11.8169 1.50012 12.2642 1.5H13.7642C14.2115 1.49998 14.6533 1.60002 15.057 1.79279C15.4607 1.98556 15.8162 2.26618 16.0974 2.6141C16.3786 2.96203 16.5785 3.36845 16.6823 3.80361C16.7862 4.23876 16.7914 4.69163 16.6976 5.12906L15.2238 12H20.5142C20.912 12 21.2935 12.158 21.5748 12.4393C21.8561 12.7206 22.0142 13.1022 22.0142 13.5ZM12.3382 12H13.6901L15.2304 4.81406C15.2772 4.59542 15.2746 4.36908 15.2226 4.15159C15.1707 3.93411 15.0708 3.73099 14.9302 3.55709C14.7897 3.38319 14.612 3.24291 14.4103 3.14653C14.2085 3.05014 13.9878 3.00007 13.7642 3H12.2642C12.0405 2.99994 11.8196 3.0499 11.6177 3.14622C11.4159 3.24255 11.2381 3.38281 11.0974 3.55672C10.9568 3.73064 10.8568 3.93381 10.8048 4.15136C10.7528 4.36892 10.7501 4.59534 10.797 4.81406L12.3382 12ZM20.5142 17.25V13.5H5.51416V17.25H20.5142Z"
+                    fill="#EBEBEF"
+                  />
+                </Svg>
+                <Text
+                  allowFontScaling={false}
+                  style={{
+                    color: '#EBEBEF',
+                    fontFamily: 'Prototype',
+                    fontSize: 20,
+                    fontStyle: 'normal',
+                    fontWeight: '400',
+                    lineHeight: 24,
+                    marginRight: 50,
+                  }}>
+                  Checklist
+                </Text>
+              </View>
+            ),
+            headerShown: false,
+            drawerItemStyle: {
+              width: '100%',
+              marginVertical: -13, // Adjust vertical margin
+            },
+          }}
+        /> */}
         {/*         <Drawer.Screen
           name="QRCode"
           component={QRCodeScanner}

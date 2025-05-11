@@ -11,6 +11,7 @@ import {
   Platform,
   BackHandler,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import Svg, {
   Circle,
@@ -26,99 +27,36 @@ import LinearGradient from 'react-native-linear-gradient';
 import {RFValue} from 'react-native-responsive-fontsize';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
+import {db} from './firebaseConfig';
+import {initializeApp} from 'firebase/app';
+import {getFirestore} from 'firebase/firestore';
+import {collection, addDoc, getDocs} from 'firebase/firestore';
 
-// max 23 Characters
-const events = [
-  {
-    id: '1',
-    time: '9.00 am  ',
-    name: 'Open House starts',
-    location: '@SST',
-    timeRange: '  9:00am - end',
-    notifTime: '8:58',
-  },
-  {
-    id: '2',
-    time: '9.30 am  ',
-    name: 'Academic Panel',
-    location: '@Auditorium',
-    timeRange: '  9:30am - 9:45am',
-    notifTime: '9:28',
-    actualLocation: 'Auditorium',
-  },
-  {
-    id: '3',
-    time: '9.45 am',
-    name: 'Student Life Panel ',
-    location: '@LO2',
-    timeRange: ' 10:00am - 10:30am',
-    notifTime: '9:58',
-    actualLocation: 'Learning Oasis 2',
-  },
-  {
-    id: '4',
-    time: '10.00 am',
-    name: 'PforSSTPanel:Transition ',
-    location: '@LO1',
-    timeRange: ' 10:00am - 10:30am',
-    notifTime: '9:58',
-    actualLocation: 'Learning Oasis 1',
-  },
-  {
-    id: '5',
-    time: '10.30 am',
-    name: 'Dance Performance ',
-    location: '@Atrium',
-    actualLocation: 'Atrium',
-    timeRange: '10:30am - 10:45am',
-    notifTime: '10:28',
-  },
-  {
-    id: '6',
-    time: '10.45 am',
-    name: 'Student Life Panel',
-    location: '@LO2',
-    timeRange: ' 10:45am - 11:15am',
-    notifTime: '10:43',
-    actualLocation: 'Learning Oasis 2',
-  },
-  {
-    id: '7',
-    time: '11.30 am',
-    name: 'Academic Panel',
-    location: '@Auditorium',
-    timeRange: ' 11:30am - 11:45am',
-    notifTime: '11:29',
-    actualLocation: 'Auditorium',
-  },
-  {
-    id: '8',
-    time: '11.30 am',
-    name: 'PforSSTPanel:Transition',
-    location: '@LO1',
-    timeRange: ' 11:30am - 12:00pm',
-    notifTime: '11:29',
-    actualLocation: 'Learning Oasis 1',
-  },
-  {
-    id: '9',
-    time: '11.30 am',
-    name: 'Show Choir Performance ',
-    location: '@Atrium',
-    actualLocation: 'Atrium',
-    timeRange: '11:30am - 11:45am',
-    notifTime: '11:29',
-  },
-  {
-    id: '10',
-    time: '12.00 pm',
-    name: 'PforSSTPanel:Transition ',
-    location: '@LO1',
-    timeRange: ' 12:15pm - 12:45pm',
-    notifTime: '12:14',
-    actualLocation: 'Learning Oasis 1',
-  },
-];
+async function fetchEventsArrayOnce() {
+  try {
+    const eventsCollectionRef = collection(db, 'events');
+    const querySnapshot = await getDocs(eventsCollectionRef);
+    const eventsArray = [];
+
+    if (querySnapshot.empty) {
+      return eventsArray;
+    }
+
+    querySnapshot.forEach(doc => {
+      const eventData = {
+        id: doc.id,
+        ...doc.data(),
+      };
+      eventsArray.push(eventData);
+    });
+
+    return eventsArray;
+  } catch (e) {
+    console.error('Error fetching and formatting documents: ', e);
+    throw e;
+  }
+}
+
 const FlatListItem = ({item}) => {
   const [isSvgOne, setSvgOne] = useState(false);
 
@@ -276,6 +214,28 @@ const FlatListItem = ({item}) => {
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const EventsPage = ({navigation}) => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchEventsArrayOnce()
+      .then(fetchedEvents => {
+        // Sort events by id numerically ascending
+        const sortedEvents = [...fetchedEvents].sort((a, b) => {
+          // If id is a string, parse as int, otherwise compare directly
+          const idA = parseInt(a.id, 10);
+          const idB = parseInt(b.id, 10);
+          return idA - idB;
+        });
+        setEvents(sortedEvents);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching events:', error);
+        setLoading(false);
+      });
+  }, []);
+
   const renderItem = ({item}) => <FlatListItem item={item} />;
   const carouselItems = [
     {
@@ -489,11 +449,26 @@ const EventsPage = ({navigation}) => {
             </Svg>
           </View>
           <View style={{marginTop: '5%'}} />
-          <FlatList
-            data={events}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-          />
+          <View
+            style={{
+              height: 360,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            {loading ? (
+              <ActivityIndicator size="large" color="#356AA9" />
+            ) : (
+              <FlatList
+                data={events}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+                ListEmptyComponent={
+                  <Text style={styles.basicText}>No events found.</Text>
+                }
+                contentContainerStyle={{flexGrow: 1}}
+              />
+            )}
+          </View>
         </SafeAreaView>
       </ImageBackground>
     </View>
