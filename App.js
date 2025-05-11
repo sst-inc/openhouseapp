@@ -211,7 +211,7 @@ const App = () => {
             },
           }}
         />
-        {/*         <Drawer.Screen
+        <Drawer.Screen
           name="Chatbot"
           component={Chatbot}
           backBehavior="history"
@@ -265,7 +265,7 @@ const App = () => {
               marginVertical: -13, // Adjust vertical margin
             },
           }}
-        /> */}
+        />
         {/*         <Drawer.Screen
           name="QRCode"
           component={QRCodeScanner}
