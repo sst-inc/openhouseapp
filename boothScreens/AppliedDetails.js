@@ -86,7 +86,10 @@ const AppliedDetails = ({route}) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     height:
-                      item.header === 'Singapore Youth Flying Club' ? 90 : 70,
+                      item.header === 'Singapore Youth Flying Club' ||
+                      item.header === 'Student Life Panel and exhibition'
+                        ? 90
+                        : 70,
                     marginLeft: '5%',
                   }}>
                   <Text

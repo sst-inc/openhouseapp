@@ -22,21 +22,21 @@ import {LogBox} from 'react-native';
 
 const sportsCCAData = [
   {
-    id: '1',
+    id: '27',
     type: 'CCA',
     header: 'Athletics',
     description:
-      'SST Athletics offers focused training in long-distance and short-distance events, fostering athletic growth and excellence. Athletes gain resilience and sportsmanship through national competitions. Alongside physical training, they develop intellectual and interpersonal skills for their future.',
+      'Athletics is dedicated to fostering holistic athlete development by providing opportunities for growth, learning, and enjoyment through sports. In addition, students are given the opportunities to nurture their intellectual and interpersonal skills. \n Our core programmes focus on cultivating leadership skills, both on and off the field, as well as instilling the spirit of sportsmanship through active participation in Inter-schools friendly competitions, National School Games (NSG) Track and Field, and Cross Country. These experiences not only enhance athletes’ athletic abilities but also prepare them for future endeavours, equipping them with the skills and character traits necessary for success.',
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
   },
   {
-    id: '2',
+    id: '23',
     type: 'CCA',
     header: 'Fencing',
     description:
-      "SST Fencing offers engaging sessions with dedicated teachers and coaches to learn fundamental fencing skills. We prepare fencers for lifelong excellence in the sport and provide opportunities for competition at Zonal and National levels. Fencing instils values like teamwork, respect, perseverance, and self-discipline. Contrary to misconceptions, fencing is a physically demanding sport akin to a fast-paced chess game. In Olympic fencing, movements are lightning-fast, requiring strength and quick thinking. If you're up for the challenge, join us and discover the intensity and skill of fencing!",
+      'Fencing is more than just a sport—it is a platform for students to develop character, leadership, and sportsmanship. Through rigorous training and competitions, fencers cultivate discipline, resilience, and strategic thinking, essential qualities for both sport and life. Our CCA is committed to raising the standards of every fencer, enhancing their skills, and grooming them into capable and confident sportsmen. With dedicated coaching and structured development programs, we aim to nurture future leaders who exhibit integrity, commitment, and perseverance. Join us and embark on a journey of excellence in both fencing and personal growth!',
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
@@ -45,77 +45,56 @@ const sportsCCAData = [
 
 const clubCCAData = [
   {
-    id: '1',
-    type: 'CCA',
-    header: 'Astronomy',
-    description:
-      "The Astronomy Club, founded in 2013, has become a popular CCA at SST. It focuses on activities like talks, trips, competitions, and teaching to foster leadership and skills like collaboration, communication, curiosity, and critical, and creative thinking. 'Ad Astra' and 'See the BIG picture' embody the club's goals.",
-    location: 'Atrium',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-  {
-    id: '3',
-    type: 'CCA',
-    header: 'Singapore Youth Flying Club',
-    description:
-      'The SYFC offers aviation programs to cultivate passion and develop members as problem-solvers and leaders in aviation. Despite COVID-19, sessions continued through eCCA and physical formats from 2020 to early 2022. Members honed Flight Simulation skills and participated in competitions like Flight Simulation@HQ, Singapore Amazing Flying Machine, and Drone Odyssey Challenge, adapting to the new normal.',
-    location: 'Atrium',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-  {
-    id: '4',
+    id: '26',
     type: 'CCA',
     header: 'Media Club',
     description:
-      'The SST Media Club is a vibrant platform for students passionate about multimedia. Explore journalism, photography, videography, audio visuals and more. Develop skills through workshops, projects, and collaborations. Learn from experts and peers, honing camera work, editing, storytelling, and creativity. Whether experienced or new, the Media Club offers a space to grow in multimedia and technology. Join us to unleash your creativity and skills!',
+      "The Media Club serves as a hub for creative exploration, providing students with plenty of opportunities to hone their skills in photography, videography, audiovisual (AV) production and journalism and chances to participate in workshops and competitions. The AV team's involvement in morning assemblies and coverage of school events demonstrates their commitment to gain practical experience and strive for excellence. In journalism, our members collaborate with students from the English Talent Development Programme for ‘SSTraits Times,’ fostering diverse perspectives and expertise. Together, they craft compelling narratives that resonate with their audience, enriching both their skills and the school community. The Photo/Video team is passionate about covering the highlights of our school events. The competencies and skills that our Club members develop can be applied in their further endeavours.",
+    location: 'Atrium',
+    image: require('../assets/layoutPics/Atrium.png'),
+    sstLoc: 'L1 Block A',
+  },
+
+  {
+    id: '28',
+    type: 'CCA',
+    header: 'Singapore Youth Flying Club',
+    description:
+      'SYFC offers students a unique opportunity to explore aviation. Through engaging programs like aeromodelling, simulator flying, and aviation knowledge courses, students gain hands-on experience and deepen their understanding of flight. The CCA also includes thrilling real-world exposure via joyrides on RSAF aircraft.  With courses on aerodynamics, aircraft propulsion systems, and quadcopter flying, participants develop technical skills and knowledge. This CCA inspires future aviators and nurture passionate aviators who aspire to improve society through real-world applications of science and technology.',
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
   },
   {
-    id: '5',
+    id: '22',
     type: 'CCA',
-    header: 'Robotics@APEX',
+    header: 'Astronomy',
     description:
-      'Robotics @APEX began in 2010, guided by Effective, Efficient, and Exemplary values. With dedicated students and staff, the club earned recognition in local and international robotics communities. Members work with LEGO, Arduino, and OpenCV systems, applying their skills in competitions like the First Lego League Cityshaper, iCooL Challenge, and IDE Robotics Challenge. Creative projects solve real-world issues. Competing and research develop resilience, critical thinking, communication, and project management skills for life.',
-    location: 'Robotics room',
+      'The Astronomy Club remains a vibrant hub for fostering curiosity and passion among our students through its dynamic and interactive activities. Designed to ignite exploration and deepen knowledge of the cosmos, the club offers training in telescope operation, radio foxhunting, astrophotography, and simulation tools like Kerbal Space Programme. Through engaging sharing sessions, outreach initiatives, and both local and international competitions and trips, students hone their leadership abilities and interpersonal skills. These experiences empower them to become confident, responsible learners and future leaders, ready to navigate the world with curiosity and purpose.',
+    location: 'Atrium',
+    image: require('../assets/layoutPics/Atrium.png'),
+    sstLoc: 'L1 Block A',
+  },
+
+  {
+    id: '24',
+    type: 'CCA',
+    header: 'Robotics',
+    description:
+      'Founded in 2010 by a group of passionate students, Robotics @APEX has grown into a dynamic club known for its excellence in both local and international robotics competitions. Guided by our core values—Effective, Efficient, and Exemplary—we continuously push boundaries in innovation and teamwork. \n As a member, you’ll explore various robotics systems, including Arduino, LEGO, and VEX, through student-led workshops. You’ll also have the opportunity to compete in prestigious competitions like First LEGO League, IDE, NRC, and VEX Robotics, as well as international events such as RoboRAVE Japan and the VEX Robotics World Championship. \n Beyond competitions, we encourage members to take on passion projects, allowing creativity and problem-solving skills to thrive. Join us and be part of a team that brings ideas to life through robotics!',
+    location: 'Robotics Room',
     image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
   },
 ];
 
-const uniformedCCAData = [
-  {
-    id: '1',
-    type: 'CCA',
-    header: 'Scouts',
-    description:
-      "The Scout programme at SST focuses on aviation, outdoor education, and developing discipline, leadership, and teamwork. Scouts are empowered to take charge of their development using the Scout Method, becoming self-reliant, supportive, responsible, and committed. Activities encourage personal involvement and responsibility, supporting SST's values and character education.",
-    location: 'Atrium',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-];
-
 const perfromingCCAData = [
   {
-    id: '1',
+    id: '25',
     type: 'CCA',
-    header: 'Guitar Ensemble',
+    header: 'Show Choir and Dance ',
     description:
-      'Formed in 2010, the Guitar Ensemble is a full-fledged Niibori guitar ensemble comprising a close-knitted community of young, passionate musicians. Under the guidance of established guitar conductors, we work towards excellence and continue to be exposed to various song genres, from classical to jazz and modern music.',
-    location: 'Atrium',
-    image: require('../assets/layoutPics/Atrium.png'),
-    sstLoc: 'L1 Block A',
-  },
-  {
-    id: '2',
-    type: 'CCA',
-    header: 'Show Choir',
-    description:
-      'Show Choir and Dance, founded in 2011, became an official performing arts CCA in 2013. It comprises a show choir, blending choral singing with choreography, and a dance crew, focusing on street dance. Both arms collaborate on musical productions, earning peer recognition. Despite COVID-19, the group adapted with music video productions for events. With the return of live performances, members continue to develop artistic skills and confidence, fostering dynamic and unconventional leaders.',
+      'SST Show Choir and Dance is one CCA family celebrating two unique art forms united by a shared love for the stage. \n The SST Show Choir blends vocal excellence with dynamic choreography, creating captivating performances that push creative boundaries. Members master the art of singing and dancing in unison, fostering teamwork and artistic growth. Through rigorous training and competitive showcases, students develop showmanship, confidence, and a passion for performance. \n The SST Dance Crew is a vibrant community of street dancers united by their love for movement and creativity. In a supportive environment, members sharpen their skills, learn discipline, and embrace teamwork. With energetic routines and opportunities to compete and collaborate, the Dance crew inspires growth, self-expression, and a shared passion for excellence, making every performance and competition an electrifying experience.',
     location: 'Atrium',
     image: require('../assets/layoutPics/Atrium.png'),
     sstLoc: 'L1 Block A',
@@ -124,7 +103,7 @@ const perfromingCCAData = [
 // collated list of all the data, starting from Sports, Clubs, Uniformed Groups then Performing Arts
 const ccaData = sportsCCAData.concat(
   clubCCAData,
-  uniformedCCAData,
+  sportsCCAData,
   perfromingCCAData,
 );
 
@@ -388,15 +367,6 @@ const CCA = () => {
                   </Text>
                   <FlatList
                     data={clubCCAData}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                    nestedScrollEnabled={false}
-                  />
-                  <Text allowFontScaling={false} style={styles.ccaTypeHeader}>
-                    Uniformed Groups
-                  </Text>
-                  <FlatList
-                    data={uniformedCCAData}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     nestedScrollEnabled={false}

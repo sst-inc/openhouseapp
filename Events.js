@@ -570,7 +570,7 @@ const styles = StyleSheet.create({
     gap: 19,
   },
   eventsDetailsBox: {
-    width: '65%',
+    width: '70%',
     height: 64,
     shadowColor: 'rgba(28, 28, 18, 0.15)',
     shadowOffset: {width: -2, height: 2},
