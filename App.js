@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -11,6 +11,7 @@ import {
   Image,
   Alert,
   BackHandler,
+  Platform,
 } from 'react-native';
 import {NavigationContainer, useRoute} from '@react-navigation/native';
 import {
@@ -35,8 +36,17 @@ import QuickLinks from './QuickLinks';
 import Credits from './secretCreds';
 import {LogBox} from 'react-native';
 import {Checklist} from './Checklist';
-import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
+import notifee, {
+  TimestampTrigger,
+  TriggerType,
+  AndroidImportance,
+} from '@notifee/react-native';
 import Chatbot from './chatbot';
+// Import our notification permission utility
+import {
+  requestNotificationPermission,
+  checkNotificationPermission,
+} from './utils/notificationPermission';
 
 const Drawer = createDrawerNavigator();
 
@@ -570,15 +580,56 @@ const App = () => {
 };
 
 const HomeScreen = ({navigation}) => {
-  function whereToGo() {
-    navigation.navigate('Events') /* ) */; // Navigate after the animation completes
-    async function onCreateTriggerNotification() {
-      await notifee.requestPermission();
-      const date = new Date('2024-05-25T12:30:00');
+  // Check notification permissions when component mounts
+  useEffect(() => {
+    // Check permissions and request if needed
+    const checkAndRequestPermissions = async () => {
+      const hasPermission = await checkNotificationPermission();
+      if (!hasPermission) {
+        console.log('Requesting notification permissions...');
+        await requestNotificationPermission();
+      }
+    };
+
+    checkAndRequestPermissions();
+  }, []);
+
+  async function whereToGo() {
+    navigation.navigate('Events'); // Navigate after the animation completes
+
+    // Check if we have permission first
+    const hasPermission = await checkNotificationPermission();
+
+    // If no permission, request it
+    if (!hasPermission) {
+      const granted = await requestNotificationPermission();
+      if (!granted) {
+        console.log('Notification permission denied');
+        // On iOS, show an alert telling users how to enable notifications
+        if (Platform.OS === 'ios') {
+          Alert.alert(
+            'Notification Permission',
+            'Please enable notifications in Settings to receive important event reminders.',
+            [
+              {text: 'Cancel', style: 'cancel'},
+              {text: 'Settings', onPress: () => Linking.openSettings()},
+            ],
+          );
+        }
+        return;
+      }
+    }
+
+    // Create notification
+    try {
+      const date = new Date();
+      // Set to 5 minutes from now as an example welcome notification
+      date.setMinutes(date.getMinutes() + 5);
+
       // Create a time-based trigger
       const trigger = {
         type: TriggerType.TIMESTAMP,
-        timestamp: date.getTime(), // fire at 11:10am (10 minutes before meeting)
+        timestamp: date.getTime(),
       };
 
       // Create a trigger notification
@@ -587,13 +638,28 @@ const HomeScreen = ({navigation}) => {
           title: 'Post event survey form',
           body: 'Please remember to fill out the post event survey for your feedback!',
           android: {
-            channelId: 'your-channel-id',
+            channelId: 'default-channel',
+            importance: AndroidImportance.HIGH,
+            pressAction: {
+              id: 'default',
+            },
+          },
+          ios: {
+            sound: 'default',
+            foregroundPresentationOptions: {
+              badge: true,
+              sound: true,
+              banner: true,
+              list: true,
+            },
           },
         },
         trigger,
       );
+      console.log('Notification scheduled successfully');
+    } catch (error) {
+      console.error('Failed to schedule notification:', error);
     }
-    onCreateTriggerNotification();
   }
   return (
     <View style={styles.container}>

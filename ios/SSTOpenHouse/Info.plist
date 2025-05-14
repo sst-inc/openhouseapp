@@ -43,6 +43,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>SST Open House 2024 requires Camera access to scan the stamp QR Codes.</string>
+	<key>NSUserNotificationUsageDescription</key>
+	<string>We need to send you notifications about important updates and reminders.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+    	<string>remote-notification</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
 	<key>UIAppFonts</key>

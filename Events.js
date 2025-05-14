@@ -12,6 +12,7 @@ import {
   BackHandler,
   Dimensions,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import Svg, {
   Circle,
@@ -26,11 +27,36 @@ import Svg, {
 import LinearGradient from 'react-native-linear-gradient';
 import {RFValue} from 'react-native-responsive-fontsize';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
+import notifee, {
+  TimestampTrigger,
+  TriggerType,
+  AndroidImportance,
+} from '@notifee/react-native';
 import {db} from './firebaseConfig';
-import {initializeApp} from 'firebase/app';
-import {getFirestore} from 'firebase/firestore';
 import {collection, addDoc, getDocs} from 'firebase/firestore';
+// Import our new notification utilities
+import {
+  requestNotificationPermission,
+  checkNotificationPermission,
+} from './utils/notificationPermission';
+import {
+  scheduleEventNotification,
+  cancelEventNotification,
+} from './utils/notificationHelpers';
+
+// Create a notification channel for Android
+async function createNotificationChannel() {
+  if (Platform.OS === 'android') {
+    await notifee.createChannel({
+      id: 'events-channel',
+      name: 'Events Channel',
+      importance: AndroidImportance.HIGH,
+    });
+  }
+}
+
+// Call the function when the app loads
+createNotificationChannel();
 
 async function fetchEventsArrayOnce() {
   try {
@@ -76,47 +102,53 @@ const FlatListItem = ({item}) => {
     loadSvgState();
   }, [item.id]);
   useEffect(() => {
-    if (isSvgOne) {
-      scheduleNotification();
-    }
-  }, [isSvgOne]);
-  async function handleState() {
-    // Toggle the state
-    setSvgOne(prevState => !prevState);
-    console.log(isSvgOne);
-    // Save the state to AsyncStorage
-    await AsyncStorage.setItem(`svgState-${item.id}`, String(isSvgOne));
-    console.log(isSvgOne);
-    // If isSvgOne is set to true, schedule a notification
-  }
-  async function scheduleNotification() {
-    if (isSvgOne === true) {
-      // Schedule the notification
-      const eventTime = item.notifTime;
-      const triggerTime = new Date(`2024-05-25T${eventTime}:00`);
-      // let notifSec = (eventMinute - new Date().getMinutes()) * 60;
-      console.log(triggerTime.getTime());
-      const trigger = {
-        type: TriggerType.TIMESTAMP,
-        timestamp: triggerTime.getTime(),
-      };
+    // Schedule or cancel notification when isSvgOne changes
+    const updateNotification = async () => {
+      if (isSvgOne) {
+        await scheduleNotification();
+      } else if (notificationID) {
+        // Use our helper function to cancel notification
+        await cancelEventNotification(notificationID);
+        setNotificationID(null);
+      }
+    };
 
-      // Create a trigger notification
-      await notifee.createTriggerNotification(
-        {
-          title: item.name,
-          body: item.location,
-          android: {
-            channelId: 'your-channel-id',
-          },
-        },
-        trigger,
+    updateNotification();
+  }, [isSvgOne]);
+
+  async function handleState() {
+    // First update the state
+    const newState = !isSvgOne;
+    setSvgOne(newState);
+
+    // Then save to AsyncStorage
+    await AsyncStorage.setItem(`svgState-${item.id}`, String(newState));
+  }
+
+  async function scheduleNotification() {
+    try {
+      // Use our new helper function to schedule the notification
+      const id = await scheduleEventNotification(item);
+
+      if (id) {
+        setNotificationID(id);
+        console.log('Notification scheduled with ID:', id);
+      } else {
+        // If scheduling failed, alert the user
+        Alert.alert(
+          'Notification Error',
+          'Failed to schedule notification. Please check your notification settings.',
+          [{text: 'OK'}],
+        );
+      }
+      return id;
+    } catch (error) {
+      console.error('Failed to schedule notification:', error);
+      Alert.alert(
+        'Notification Error',
+        'An error occurred while scheduling the notification.',
+        [{text: 'OK'}],
       );
-      setNotificationID(notificationID);
-      console.log('Notification scheduled');
-    } else {
-      await notifee.cancelAllNotifications();
-      setNotificationID(null);
     }
   }
 
@@ -189,7 +221,7 @@ const FlatListItem = ({item}) => {
                         height={40}
                         fill="#000000"
                         viewBox="0 0 40 40"
-                        xmlnss="http://www.w3.org/2000/svg">
+                        xmlns="http://www.w3.org/2000/svg">
                         <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
                         <G
                           id="SVGRepo_tracerCarrier"
@@ -216,6 +248,19 @@ const height = Dimensions.get('window').height;
 const EventsPage = ({navigation}) => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Check notification permissions when component mounts
+  useEffect(() => {
+    const checkNotificationPermissions = async () => {
+      const hasPermission = await checkNotificationPermission();
+      if (!hasPermission) {
+        const granted = await requestNotificationPermission();
+        console.log('Notification permission granted:', granted);
+      }
+    };
+
+    checkNotificationPermissions();
+  }, []);
 
   useEffect(() => {
     fetchEventsArrayOnce()
