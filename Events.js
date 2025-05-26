@@ -86,35 +86,18 @@ async function fetchEventsArrayOnce() {
 const FlatListItem = ({item}) => {
   const [isSvgOne, setSvgOne] = useState(false);
 
-  const [notificationID, setNotificationID] = useState(null);
   useEffect(() => {
     const loadSvgState = async () => {
       const savedState = await AsyncStorage.getItem(`svgState-${item.id}`);
-      console.log(savedState);
       if (savedState === null) {
         setSvgOne(false);
       } else {
         setSvgOne(savedState === 'true');
       }
-      console.log(isSvgOne);
     };
 
     loadSvgState();
   }, [item.id]);
-  useEffect(() => {
-    // Schedule or cancel notification when isSvgOne changes
-    const updateNotification = async () => {
-      if (isSvgOne) {
-        await scheduleNotification();
-      } else if (notificationID) {
-        // Use our helper function to cancel notification
-        await cancelEventNotification(notificationID);
-        setNotificationID(null);
-      }
-    };
-
-    updateNotification();
-  }, [isSvgOne]);
 
   async function handleState() {
     // First update the state
@@ -123,33 +106,6 @@ const FlatListItem = ({item}) => {
 
     // Then save to AsyncStorage
     await AsyncStorage.setItem(`svgState-${item.id}`, String(newState));
-  }
-
-  async function scheduleNotification() {
-    try {
-      // Use our new helper function to schedule the notification
-      const id = await scheduleEventNotification(item);
-
-      if (id) {
-        setNotificationID(id);
-        console.log('Notification scheduled with ID:', id);
-      } else {
-        // If scheduling failed, alert the user
-        Alert.alert(
-          'Notification Error',
-          'Failed to schedule notification. Please check your notification settings.',
-          [{text: 'OK'}],
-        );
-      }
-      return id;
-    } catch (error) {
-      console.error('Failed to schedule notification:', error);
-      Alert.alert(
-        'Notification Error',
-        'An error occurred while scheduling the notification.',
-        [{text: 'OK'}],
-      );
-    }
   }
 
   return (
@@ -186,54 +142,7 @@ const FlatListItem = ({item}) => {
                     {item.location}
                   </Text>
                 </View>
-                <View style={{flex: 1, minHeight: 40}}>
-                  <TouchableOpacity
-                    style={{position: 'absolute', top: -30, right: 0}}
-                    onPress={() => {
-                      handleState();
-                      setTimeout(() => {
-                        notifee
-                          .getTriggerNotificationIds()
-                          .then(ids =>
-                            console.log('All trigger notifications: ', ids),
-                          );
-                      }, 200);
-                    }}>
-                    {isSvgOne === true ? (
-                      <Svg
-                        width={40}
-                        height={40}
-                        fill="#000000"
-                        viewBox="0 0 40 40"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
-                        <G
-                          id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"></G>
-                        <G id="SVGRepo_iconCarrier">
-                          <Path d="M10,20h4a2,2,0,0,1-4,0Zm8-4V10a6,6,0,0,0-5-5.91V3a1,1,0,0,0-2,0V4.09A6,6,0,0,0,6,10v6L4,18H20Z"></Path>
-                        </G>
-                      </Svg>
-                    ) : (
-                      <Svg
-                        width={40}
-                        height={40}
-                        fill="#000000"
-                        viewBox="0 0 40 40"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
-                        <G
-                          id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"></G>
-                        <G id="SVGRepo_iconCarrier">
-                          <Path d="M10,21h4a2,2,0,0,1-4,0ZM3.076,18.383a1,1,0,0,1,.217-1.09L5,15.586V10a7.006,7.006,0,0,1,6-6.92V2a1,1,0,0,1,2,0V3.08A7.006,7.006,0,0,1,19,10v5.586l1.707,1.707A1,1,0,0,1,20,19H4A1,1,0,0,1,3.076,18.383ZM6.414,17H17.586l-.293-.293A1,1,0,0,1,17,16V10A5,5,0,0,0,7,10v6a1,1,0,0,1-.293.707Z"></Path>
-                        </G>
-                      </Svg>
-                    )}
-                  </TouchableOpacity>
-                </View>
+                {/* Notification button removed */}
               </View>
             </LinearGradient>
           </View>

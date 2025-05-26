@@ -12,7 +12,7 @@
   "dependencies": {
     "@akumzy/react-native-animated-gallery": "^1.2.1",
     "@google/genai": "^0.13.0",
-    "@notifee/react-native": "^7.8.2",
+    "@notifee/react-native": "^9.1.8",
     "@openspacelabs/react-native-zoomable-view": "^2.1.6",
     "@react-native-async-storage/async-storage": "^1.22.3",
     "@react-native-community/blur": "^4.4.0",

@@ -117,3 +117,18 @@ export async function cancelEventNotification(notificationId) {
     console.error('Failed to cancel notification:', error);
   }
 }
+
+// Add background event handler for notifee
+notifee.onBackgroundEvent(async ({type, detail}) => {
+  switch (type) {
+    case notifee.EventType.DISMISSED:
+      console.log('Notification dismissed:', detail.notification);
+      break;
+    case notifee.EventType.PRESS:
+      console.log('Notification pressed:', detail.notification);
+      // Handle navigation or other actions here
+      break;
+    default:
+      console.log('Unhandled background event:', type);
+  }
+});
