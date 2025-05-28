@@ -120,68 +120,6 @@ const events = [
   },
 ];
 const FlatListItem = ({item}) => {
-  const [isSvgOne, setSvgOne] = useState(false);
-
-  const [notificationID, setNotificationID] = useState(null);
-  useEffect(() => {
-    const loadSvgState = async () => {
-      const savedState = await AsyncStorage.getItem(`svgState-${item.id}`);
-      console.log(savedState);
-      if (savedState === null) {
-        setSvgOne(false);
-      } else {
-        setSvgOne(savedState === 'true');
-      }
-      console.log(isSvgOne);
-    };
-
-    loadSvgState();
-  }, [item.id]);
-  useEffect(() => {
-    if (isSvgOne) {
-      scheduleNotification();
-    }
-  }, [isSvgOne]);
-  async function handleState() {
-    // Toggle the state
-    setSvgOne(prevState => !prevState);
-    console.log(isSvgOne);
-    // Save the state to AsyncStorage
-    await AsyncStorage.setItem(`svgState-${item.id}`, String(isSvgOne));
-    console.log(isSvgOne);
-    // If isSvgOne is set to true, schedule a notification
-  }
-  async function scheduleNotification() {
-    if (isSvgOne === true) {
-      // Schedule the notification
-      const eventTime = item.notifTime;
-      const triggerTime = new Date(`2024-05-25T${eventTime}:00`);
-      // let notifSec = (eventMinute - new Date().getMinutes()) * 60;
-      console.log(triggerTime.getTime());
-      const trigger = {
-        type: TriggerType.TIMESTAMP,
-        timestamp: triggerTime.getTime(),
-      };
-
-      // Create a trigger notification
-      await notifee.createTriggerNotification(
-        {
-          title: item.name,
-          body: item.location,
-          android: {
-            channelId: 'your-channel-id',
-          },
-        },
-        trigger,
-      );
-      setNotificationID(notificationID);
-      console.log('Notification scheduled');
-    } else {
-      await notifee.cancelAllNotifications();
-      setNotificationID(null);
-    }
-  }
-
   return (
     <>
       <View style={styles.eventsContainer}>
@@ -216,54 +154,6 @@ const FlatListItem = ({item}) => {
                     {item.location}
                   </Text>
                 </View>
-                <View style={{flex: 1, minHeight: 40}}>
-                  <TouchableOpacity
-                    style={{position: 'absolute', top: -30, right: 0}}
-                    onPress={() => {
-                      handleState();
-                      setTimeout(() => {
-                        notifee
-                          .getTriggerNotificationIds()
-                          .then(ids =>
-                            console.log('All trigger notifications: ', ids),
-                          );
-                      }, 200);
-                    }}>
-                    {isSvgOne === true ? (
-                      <Svg
-                        width={40}
-                        height={40}
-                        fill="#000000"
-                        viewBox="0 0 40 40"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
-                        <G
-                          id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"></G>
-                        <G id="SVGRepo_iconCarrier">
-                          <Path d="M10,20h4a2,2,0,0,1-4,0Zm8-4V10a6,6,0,0,0-5-5.91V3a1,1,0,0,0-2,0V4.09A6,6,0,0,0,6,10v6L4,18H20Z"></Path>
-                        </G>
-                      </Svg>
-                    ) : (
-                      <Svg
-                        width={40}
-                        height={40}
-                        fill="#000000"
-                        viewBox="0 0 40 40"
-                        xmlnss="http://www.w3.org/2000/svg">
-                        <G id="SVGRepo_bgCarrier" stroke-width="0"></G>
-                        <G
-                          id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"></G>
-                        <G id="SVGRepo_iconCarrier">
-                          <Path d="M10,21h4a2,2,0,0,1-4,0ZM3.076,18.383a1,1,0,0,1,.217-1.09L5,15.586V10a7.006,7.006,0,0,1,6-6.92V2a1,1,0,0,1,2,0V3.08A7.006,7.006,0,0,1,19,10v5.586l1.707,1.707A1,1,0,0,1,20,19H4A1,1,0,0,1,3.076,18.383ZM6.414,17H17.586l-.293-.293A1,1,0,0,1,17,16V10A5,5,0,0,0,7,10v6a1,1,0,0,1-.293.707Z"></Path>
-                        </G>
-                      </Svg>
-                    )}
-                  </TouchableOpacity>
-                </View>
               </View>
             </LinearGradient>
           </View>
@@ -277,6 +167,70 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const EventsPage = ({navigation}) => {
   const renderItem = ({item}) => <FlatListItem item={item} />;
+  
+  // Schedule post-event survey notifications
+  useEffect(() => {
+    schedulePostEventSurveyNotifications();
+  }, []);
+
+  // Function to schedule post-event survey notifications
+  const schedulePostEventSurveyNotifications = async () => {
+    try {
+      // First notification on May 31st at 1:15 PM
+      const surveyDate1 = new Date(2025, 4, 31, 13, 15, 0); // Month is 0-indexed (May = 4)
+      const trigger1 = {
+        type: TriggerType.TIMESTAMP,
+        timestamp: surveyDate1.getTime(),
+      };
+      
+      // Second notification on June 1st at 1:15 PM
+      const surveyDate2 = new Date(2025, 5, 1, 13, 15, 0); // June = 5
+      const trigger2 = {
+        type: TriggerType.TIMESTAMP,
+        timestamp: surveyDate2.getTime(),
+      };
+
+      // Create the channel for Android if it doesn't exist
+      if (Platform.OS === 'android') {
+        await notifee.createChannel({
+          id: 'survey-channel',
+          name: 'Survey Notifications',
+          importance: 4, // High importance
+        });
+      }
+
+      // Schedule first notification
+      await notifee.createTriggerNotification(
+        {
+          id: 'survey-notification-1',
+          title: 'Post-Event Survey',
+          body: 'Please take a moment to fill out our post-event survey about your experience at the Open House.',
+          android: {
+            channelId: 'survey-channel',
+          },
+        },
+        trigger1,
+      );
+      
+      // Schedule second notification
+      await notifee.createTriggerNotification(
+        {
+          id: 'survey-notification-2',
+          title: 'Last Reminder: Post-Event Survey',
+          body: 'This is your last reminder to complete our post-event survey. Your feedback is valuable to us!',
+          android: {
+            channelId: 'survey-channel',
+          },
+        },
+        trigger2,
+      );
+      
+      console.log('Post-event survey notifications scheduled successfully');
+    } catch (error) {
+      console.error('Error scheduling survey notifications:', error);
+    }
+  };
+  
   const carouselItems = [
     {
       id: '1',

@@ -32,114 +32,124 @@ import {data} from './BoothInfo';
 
 const appliedSubjectsData = [
   {
-    id: '14',
-    type: 'Mainstream Subjects',
-    header: 'English',
+    id: '6',
+    type: 'Academic',
+    header: 'English Dept',
     description:
-      "Ready to embark on an exciting journey through the world of words and ignite your passion for English language and literature? Visit the English Language Department booth at the School of Science and Technology's Open House and discover the power of language! At our booth, you'll have the opportunity to explore the wonders of English language learning through engaging activities and interactive displays. Whether you're a budding wordsmith or just beginning your linguistic adventure, there are fun quizzes and games, as well as word puzzles for you to enjoy! Our friendly faculty members and student ambassadors will be on hand to answer any questions you may have about our English language programs, curriculum, and extracurricular activities. We look forward to welcoming you with open arms and sharing with you our innovative teaching methods and personalised approach to language learning. See you at the booth!",
+      "Ready to embark on an exciting journey through the world of words and ignite your passion for English language and literature? Visit the English Language Department booth at the School of Science and Technology's Open House, our friendly faculty members and student ambassadors will be on hand to answer any questions you may have about our English language programs, curriculum, and extracurricular activities. We look forward to welcoming you with open arms and sharing with you our innovative teaching methods and personalised approach to language learning. See you at the booth!",
     location: 'ADMT Studio',
     image: require('../assets/layoutPics/AdmtStudio.png'),
-    sstLoc: 'Level 2 Block C',
+    sstLoc: 'L2 Block C',
+  },
+  {
+    id: '7',
+    type: 'Academic',
+    header: 'MTL Dept',
+    description:
+      "Get ready to dive into the exciting world of language and culture with the Mother Tongue Languages (MTL) Department! We’re thrilled to showcase how passions come alive through immersive experiences like MTL Fortnight, where students embark on a journey of cultural workshops, multimedia projects, and fun-filled language enrichment activities. Through collaborative projects and hands-on learning, students not only sharpen their language skills but also gain fresh insights into diverse perspectives and important societal issues. From thrilling cultural immersion trips in the TDP programme to friendly competitions, in-house training, and even real-life exposure through emceeing – there's never a dull moment! Join us and experience language learning like never before!",
+    location: 'MTL Room',
+    image: require('../assets/layoutPics/Level5c.png'),
+    sstLoc: 'L5 Block C',
+  },
+  {
+    id: '8',
+    type: 'Academic',
+    header: 'Physics hands on',
+    description:
+      'Join our interactive workshop at Physics Lab 2 and learn the art of crafting a functional beam balance. Explore the concept of equilibrium in mechanics as you assemble this classic scientific instrument. Unleash your inner physicist through this hands-on learning experience!',
+    location: 'Physics Lab 2',
+    image: require('../assets/layoutPics/Level2.png'),
+    sstLoc: 'L2 Block C',
+  },
+  {
+    id: '9',
+    type: 'Academic',
+    header: 'Chemistry hands on',
+    description:
+      'In SST, Chemistry is taught through Applied Learning with technology integration and varied assessments to understand interactions between matter. "Innovation with Colours", our booth’s theme highlights the significance of colours in chemical reactions. Explore creative and fun hands-on activities and experiments at Chemistry Lab 2. Join us to delve into colourful science!',
+    location: 'Chem Lab 2',
+    image: require('../assets/layoutPics/Level1.png'),
+    sstLoc: 'L1 Block C',
+  },
+  {
+    id: '10',
+    type: 'Academic',
+    header: 'Biotechnology hands on',
+    description:
+      "Ever wondered how science and technology join forces to make the world a better place? Get ready to dive into the fascinating world of biotechnology! In this session, we'll uncover the secrets of genetic engineering and how it helps create genetically modified food. Plus, you won't want to miss our hands-on activity where we'll explore agarose gel electrophoresis together. Join us for an unforgettable journey of discovery and fun!",
+    location: 'Biotech lab 1',
+    image: require('../assets/layoutPics/Level1.png'),
+    sstLoc: 'L1 Block C',
+  },
+  {
+    id: '11',
+    type: 'Academic',
+    header: 'Electronics hands on',
+    description:
+      'Electronics  engineers  solve  problems and  improve  lives  by  applying  their knowledge and skills in electronics. Their solutions often come in the form of electronic systems. Join our hands-on activity to experience the work of an electronic engineer! You will learn how a computer simulation is used in circuit design and build an automatic lighting system.',
+    location: 'Engineering Lab',
+    image: require('../assets/layoutPics/Level2.png'),
+    sstLoc: 'L2 Block C',
+  },
+  {
+    id: '12',
+    type: 'Academic',
+    header: 'Biology hands on',
+    description:
+      'Biology is an academic discipline that enables us to comprehend the functioning, evolution, and interactions of various organisms within the living world, including humans. Learning from our natural environment, beyond the boundaries of our classroom, we will explore the rich diversity of the world of plants and how they evolved millions of years ago on the very grounds of SST. ',
+    location: 'Bio Lab 1',
+    image: require('../assets/layoutPics/Level1.png'),
+    sstLoc: 'L1 Block C',
+  },
+  {
+    id: '13',
+    type: 'Academic',
+    header: 'Environmental Education',
+    description:
+      'The Environmental Education committee is committed to cultivating environmentally conscious leaders who will drive positive change. We encourage students to actively engage in the 3As: \n Awareness: Understanding their responsibility towards the environment. \n Action: Taking concrete steps to create a positive environmental impact. \n Advocacy: Championing causes that promote sustainability and environmental well-being. \n Through our environmental programs, we aim to empower students to lead initiatives that benefit the environment and inspire others to do the same. Eco-ambassadors will showcase their learning experiences and demo to visitors on prepping compost and encourage this habit at home.',
+    location: 'Physics Lab 1',
+    image: require('../assets/layoutPics/Level2.png'),
+    sstLoc: 'L2 Block C',
+  },
+  {
+    id: '14',
+    type: 'Academic',
+    header: 'Science',
+    description:
+      'The SST Science curriculum is based on the philosophy of education through inquiry, experimentation, and discovery. Students are presented with a variety of learning experiences which pique their curiosity about the natural world and help cultivate habits of mind to be out-of-the-box innovators. The Science curriculum aims to develop students’ scientific knowledge and conceptual understanding; and Science process skills through the disciplines of Biology, Chemistry and Physics.',
+    location: 'Research Lab',
+    image: require('../assets/layoutPics/Level2.png'),
+    sstLoc: 'L2 Block C',
   },
   {
     id: '15',
-    type: 'Mainstream Subjects',
-    header: 'Mother tongue language',
+    type: 'Academic',
+    header: 'IDP',
     description:
-      'The Mother Tongue Languages (MTL) Department will showcase how interests are inculcated through immersive experiences like MTL Fortnight, where students engage in cultural workshops, multimedia projects, and language enrichment activities. Through collaborative projects and authentic learning experiences, students hone their language skills while exploring diverse perspectives and societal issues.',
-    location: 'Multi-Purpose Room 4',
-    image: require('../assets/layoutPics/Level3.png'),
-    sstLoc: 'L3 Block C',
+      'The SST-Ngee Ann Polytechnic Integrated Diploma Programme (SST-NP IDP) offers a first-of-its-kind STEAM (Science, Technology, Engineering, Aesthetics, and Mathematics) - related through-train programme, providing Secondary Three students with a direct pathway to NP. This programme emphasises applied learning and engages students in a wide range of STEM fields via capstone projects with start-ups, industry partners and the community. Furthermore, students gain valuable 21st century skills, becoming innovative problem solvers and active contributors to society.',
+    location: 'ADMT Studio',
+    image: require('../assets/layoutPics/AdmtStudio.png'),
+    sstLoc: 'L2 Block C',
   },
   {
     id: '16',
-    type: 'Mainstream Subjects',
-    header: 'Physics',
+    type: 'Academic',
+    header: 'Mathematics Dept',
     description:
-      'Join our interactive workshop and learn the art of crafting a functional beam balance. Explore the concept of equilibrium in mechanics as you assemble this classic scientific instrument. Unleash your inner physicist through this hands-on learning experience!',
-    location: 'Physics Lab',
-    image: require('../assets/layoutPics/Level2.png'),
+      'The SST Mathematics Programme strives to foster a love for Mathematics through a dynamic and innovative approach that emphasises applied and integrated learning. Real-world scenarios are presented as performance tasks, enabling students to apply their problem-solving and mathematical modeling skills. Our concept-focused curriculum is designed to ensure a deep understanding of core mathematical principles. With learner-centered assessments and technology-enabled experiences, students are empowered to explore, reflect, and apply their mathematical knowledge in meaningful ways — fostering both critical and computational thinking skills. \n The department also places a strong emphasis on cultivating a Mathematical Mindset community. We nurture the belief that all students can succeed in Mathematics, encouraging them to embrace mistakes as opportunities for growth and to approach challenges with resilience. Through self-reflection and productive struggle, students are empowered to take ownership of their learning and to pursue mathematical excellence with confidence. This mindset, coupled with opportunities for talented students through the SST Math Talent Development Programme (TDP), ensures that every learner can excel. The TDP provides students with avenues to explore advanced projects, participate in showcases, and engage in mathematics competitions — further igniting passion and nurturing excellence in the subject. \n The SST Mathematics Programme aims to not only ensures mastery of mathematical concepts but also prepares students to become critical thinkers and problem-solvers in an ever-evolving, technology-driven world.',
+    location: 'ADMT Studio',
+    image: require('../assets/layoutPics/AdmtStudio.png'),
     sstLoc: 'L2 Block C',
   },
   {
     id: '17',
-    type: 'Mainstream Subjects',
-    header: 'Chemistry',
+    type: 'Academic',
+    header: 'Humanities Dept',
     description:
-      'In SST, Chemistry is taught through Applied Learning with technology integration and varied assessments to understand interactions between matter. "Innovation with Colours", our booth’s theme highlights the significance of colours in chemical reactions. Explore creative and fun hands-on activities and experiments at Chemistry Lab 1. Join us to delve into colourful science!',
-    location: 'Chemistry Lab',
-    image: require('../assets/layoutPics/Level1.png'),
-    sstLoc: 'L1 Block C',
-  },
-  {
-    id: '18',
-    type: 'Mainstream Subjects',
-    header: 'Biology',
-    description:
-      'Biology is an academic discipline that enables us to comprehend the functioning, evolution, and interactions of various organisms within the living world, including humans. ',
-    location: 'Biology Lab',
-    image: require('../assets/layoutPics/Level1.png'),
-    sstLoc: 'L1 Block C',
-  },
-  {
-    id: '19',
-    type: 'Mainstream Subjects',
-    header: 'Science',
-    description:
-      'The SST Science curriculum is based on the philosophy of education through inquiry, experimentation, and discovery. Students are presented with a variety of learning experiences which pique their curiosity about the natural world and help cultivate habits of mind to be out-of-the-box innovators. The Science curriculum aims to develop students’ scientific knowledge and conceptual understanding; and Science process skills through the disciplines of Biology, Chemistry and Physics.',
-    location: 'Research lab',
-    image: require('../assets/layoutPics/Level2.png'),
-    sstLoc: 'L2 Block C',
-  },
-  {
-    id: '20',
-    type: 'Mainstream Subjects',
-    header: 'Mathematics',
-    description:
-      'The SST Mathematics Programme strives to instill in students a love for Mathematics through a dynamic and innovative approach that integrates technology, authentic problem solving, mathematical modelling and computational thinking. By presenting students with performance tasks tied to real-world scenarios, students are taught to apply problem-solving skills and computational thinking to break down complex problems. The department places emphasis on the development of a Mathematical Mindset, fostering a belief that all students can excel in Mathematics. This approach encourages self-reflection, embracing mistakes, and productive struggles. The department also supports students who show aptitude and mathematical rigour through the SST Math Talent Development Programme (TDP), providing project showcases and competition opportunities.',
-    location: 'ADMT Studio',
-    image: require('../assets/layoutPics/AdmtStudio.png'),
-    sstLoc: 'L2 Block C',
-  },
-  {
-    id: '21',
-    type: 'Mainstream Subjects',
-    header: 'Humanities',
-    description:
-      'Through the lens of Applied Learning, the Humanities curriculum in SST is designed to cultivate a deeper understanding of people, places and modern phenomena by bridging the gap between theoretical knowledge and practical application. Explore the journey of source-based inquiry and map creation at our booth with the theme being, "Humanities in the Modern World: Illuminating Paths, Shaping Futures" ',
-    location: 'ADMT Studio',
-    image: require('../assets/layoutPics/AdmtStudio.png'),
-    sstLoc: 'L2 Block C',
-  },
-  {
-    id: '22',
-    type: 'Mainstream Subjects',
-    header: 'ADMT',
-    description:
-      'The Arts, Design, Media and Technology (ADMT) programme equip students with principles, knowledge and skills from prototyping to product design to interactive design media and video production. Boost your creative output at the ADMT booth to design and create a button badge of your own!',
-    location: 'Maker Lab',
-    image: require('../assets/layoutPics/MakerLab.png'),
-    sstLoc: 'L2 Block C',
-  },
-  {
-    id: '23',
-    type: 'Mainstream Subjects',
-    header: 'Informatics    ',
-    description:
-      'The Informatics Department comprises the lower secondary Information and Communication Technology (ICT) and upper secondary Computing+ subjects. Our mission is to inspire and enable our students to use technology as a force for good in the world. Technology has the power to solve some of the most pressing challenges our society faces. Our goal is to cultivate a community of students who are passionate about using their skills and knowledge to make a positive difference in the world. Through hands-on experiential learning and rigorous coursework, we aim to equip our students with the technical expertise and ethical grounding necessary to use technology to benefit humanity.',
-    location: 'SST Inc HQ',
-    image: require('../assets/layoutPics/Level3.png'),
-    sstLoc: 'L3 Block C',
-  },
-  {
-    id: '24',
-    type: 'Mainstream Subjects',
-    header: 'S&W',
-    description:
-      'The S&W curriculum is based on the philosophy of education through the physical; a multi-dimensional approach to develop students holistically through sports and games excellence. The curriculum engages students actively with relevant activities that help them learn experientially. Lessons are focused on acquiring games skills for sports recreation, uncovering games concepts for understanding, and promoting sportsmanship and sporting behaviour through authentic sports participation and competition. ',
-    location: 'Outside Maker Lab',
-    image: require('../assets/layoutPics/MakerLab.png'),
-    sstLoc: 'L2 Block C',
+      'Through the lens of Applied Learning, the Humanities curriculum in SST is designed to cultivate a deeper understanding of people, places and modern phenomena by bridging the gap between theoretical knowledge and practical application. Immerse yourselves in the realm of Humanities through source-based inquiry, strategic play and virtual fieldwork at our booth with the theme being, "Perspectives Unlocked: A Humanities Challenge"',
+    location: 'Humanities Room',
+    image: require('../assets/layoutPics/Level5c.png'),
+    sstLoc: 'L5 Block C',
   },
 ];
 
@@ -290,7 +300,7 @@ const MainStream = () => {
             </TouchableOpacity>
             <View style={styles.topSidebar}>
               <Text allowFontScaling={false} style={styles.header}>
-                Mainstream
+                Academic
               </Text>
               <TouchableOpacity onPress={handlePress1}>
                 <Svg

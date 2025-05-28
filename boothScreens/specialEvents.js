@@ -21,29 +21,29 @@ import {LogBox} from 'react-native';
 
 const specialData = [
   {
-    id: '24',
+    id: '1',
     type: 'Special',
-    header: 'DSA booth',
+    header: 'DSA Booth',
     description:
       'Please approach us here if you have any questions regarding the DSA selection process!',
-    location: 'Infohub',
+    location: 'InfoHub',
     image: require('../assets/layoutPics/Level5.png'),
     sstLoc: 'L5 Block A',
   },
   {
-    id: '25',
+    id: '2',
     type: 'Special',
-    header: 'Academic panel',
+    header: 'Academic Panel',
     description:
       'Join our School Leaders and various academic staff in a conversation to find out more about the SST curriculum and opportunities that students are presented with!',
     location: 'Auditorium',
-    image: require('../assets/layoutPics/Level4.png'),
-    sstLoc: 'L4 Block A',
+    image: require('../assets/layoutPics/Level5.png'),
+    sstLoc: 'L5 Block A',
   },
   {
-    id: '26',
+    id: '3',
     type: 'Special',
-    header: 'Alumni panel',
+    header: ' SSTAA Liaison',
     description:
       'Explore the post-secondary experience with our past students! Here, you can speak to our alumni who are at various stages of their post-secondary journey and find out more on how the SST experience has influenced them in the various pathways that they are currently on. ',
     location: 'MPR3',
@@ -51,44 +51,64 @@ const specialData = [
     sstLoc: 'L3 Block C',
   },
   {
-    id: '27',
+    id: '4',
     type: 'Special',
-    header: 'PforSST',
+    header: 'PforSST Liaison',
     description:
-      'Hear about the SST experience from the perspective of a parent! Come and speak to our friendly PforSST members and join our panel discussion where you can gain some insights on various aspects of the school and have some of your questions answered!',
+      'Hear about the SST experience from the perspective of a parent! Come and speak to our friendly PforSST members and join our panel discussion where you can gain some insights on various aspects of the school and have some of your questions answered! ',
     location: 'LO1',
     image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
   },
   {
-    id: '28',
+    id: '5',
     type: 'Special',
-    header: 'Student life panel',
+    header: 'Student Life Panel and exhibition',
     description:
-      'Take the chance to speak with and ask students about student life @ SST.',
-    location: 'LO1',
+      'Take the chance to speak with and hear from our students as they share their experiences, challenges, and highlights of their student life @ SST.',
+    location: 'LO2',
     image: require('../assets/layoutPics/Level3.png'),
-    sstLoc: 'L3 Block c',
+    sstLoc: 'L3 Block C',
   },
   {
-    id: '29',
+    id: '18',
+    type: 'Special',
+    header: 'ADMT Dept',
+    description:
+      'The Arts, Design, Media and Technology (ADMT) programme equip students with principles, knowledge and skills from prototyping to product design to interactive design media, architecture design and video production.',
+    location: 'Beta Lab',
+    image: require('../assets/layoutPics/Level4c.png'),
+    sstLoc: 'L4 Block C',
+  },
+  {
+    id: '19',
     type: 'Special',
     header: 'SST Inc',
     description:
-      'SST Inc HQ. is part of SST’s technology talent development programme. It aims to be locally and globally recognised as an incubator that fosters a deep interest in Infocomm Technology among our students and nurtures their app development and entrepreneurship talents to impact their community positively.',
+      '"The Informatics Department comprises the lower secondary Information and Communication Technology (ICT) and upper secondary Computing+ subjects. Our mission is to inspire and enable our students to use technology as a force for good in the world. Technology has the power to solve some of the most pressing challenges our society faces. Our goal is to cultivate a community of students who are passionate about using their skills and knowledge to make a positive difference in the world. Through hands-on experiential learning and rigorous coursework, we aim to equip our students with the technical expertise and ethical grounding necessary to use technology to benefit humanity. \n SST Inc. is part of SST’s technology talent development programme. It aims to be locally and globally recognised as an incubator that fosters a deep interest in Infocomm Technology among our students and nurtures their app development and entrepreneurship talents to impact their community positively."',
     location: 'SST Inc HQ',
     image: require('../assets/layoutPics/Level3.png'),
     sstLoc: 'L3 Block C',
   },
   {
-    id: '30',
+    id: '20',
     type: 'Special',
-    header: 'IDP',
+    header: 'S&W Dept',
     description:
-      'The SST-Ngee Ann Polytechnic Integrated Diploma Programme (SST-NP IDP) offers a first-of-its-kind STEAM (Science, Technology, Engineering, Aesthetics, and Mathematics) - related through-train programme, providing Secondary Three students with a direct pathway to NP. This programme emphasises applied learning and engages students in a wide range of STEM fields via capstone projects with start-ups, industry partners and the community. Furthermore, students gain valuable 21st century skills, becoming innovative problem solvers and active contributors to society.',
-    location: 'ADMT Studio',
-    image: require('../assets/layoutPics/AdmtStudio.png'),
+      'The S&W curriculum is based on the philosophy of education through the physical; a multi-dimensional approach to develop students holistically through sports and games excellence. The curriculum engages students actively with relevant activities that help them learn experientially. Lessons are focused on acquiring games skills for sports recreation, uncovering games concepts for understanding, and promoting sportsmanship and sporting behaviour through authentic sports participation and competition.  \n Students experience physical, mental and social emotional challenges that effectively develop their strength of character. \n There is also a focus on outdoor education that compels students to develop appropriate outdoor skills and sharpen their coping and management strategies through physical activities while cultivating an attitude of care and appreciation for the environment.',
+    location: 'Outside Makers Lab',
+    image: require('../assets/layoutPics/Level2.png'),
     sstLoc: 'L2 Block C',
+  },
+  {
+    id: '21',
+    type: 'Special',
+    header: 'ARC@SST',
+    description:
+      'ARC@SST is a new initiative launched this year to support and inspire students with a strong interest in scientific research beyond the classroom. It provides a platform for students to explore real-world scientific questions through hands-on experimentation, guided inquiry, and collaborative projects. Members will develop valuable skills in science communication, critical thinking, and research design. The club also offers opportunities to take part in science competitions and conduct outreach programs at primary schools, aiming to spark curiosity and a love for science in younger students. Through these experiences, students will gain confidence in presenting their ideas and deepen their understanding of the scientific process.',
+    location: 'Bio Lab 2',
+    image: require('../assets/layoutPics/Level1.png'),
+    sstLoc: 'L1 Block C',
   },
 ];
 
