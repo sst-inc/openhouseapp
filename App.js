@@ -332,7 +332,7 @@ const App = () => {
             },
           }}
         />
-        <Drawer.Screen
+        {/*         <Drawer.Screen
           name="Chatbot"
           component={Chatbot}
           backBehavior="history"
@@ -392,7 +392,7 @@ const App = () => {
               marginVertical: -9, // Adjust vertical margin
             },
           }}
-        />
+        /> */}
         {/*         <Drawer.Screen
           name="Layout"
           component={Layout}

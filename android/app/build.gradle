@@ -80,8 +80,8 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         missingDimensionStrategy 'react-native-camera', 'mlkit' // Inserted line
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
-        versionName "1.1"
+        versionCode 100
+        versionName "1.2"
     }
     signingConfigs {
         release{
