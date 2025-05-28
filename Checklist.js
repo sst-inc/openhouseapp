@@ -17,9 +17,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import BlockA from './checklist/blockA';
-import BlockB from './checklist/blockB';
 import BlockC from './checklist/blockC';
-import BlockD from './checklist/blockD';
 import AppliedDetails from './boothScreens/AppliedDetails';
 
 const width = Dimensions.get('window').width;
@@ -114,41 +112,6 @@ function ChecklistHome({navigation}) {
                   padding: 20,
                   marginBottom: 20,
                 }}
-                onPress={() => navigation.navigate('BlockB')}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <Path
-                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                      fill="#fff"
-                    />
-                  </Svg>
-                  <Text
-                    style={{
-                      color: '#fff',
-                      fontFamily: 'Montserrat-SemiBold',
-                      fontSize: 18,
-                      marginLeft: 12,
-                    }}>
-                    Block B
-                  </Text>
-                </View>
-                <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <Path
-                    d="M9.29 6.71a1 1 0 0 1 1.42 0l4 4a1 1 0 0 1 0 1.42l-4 4a1 1 0 1 1-1.42-1.42L12.59 12l-3.3-3.29a1 1 0 0 1 0-1.42z"
-                    fill="#fff"
-                  />
-                </Svg>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#4F90DD',
-                  borderRadius: 8,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: 20,
-                  marginBottom: 20,
-                }}
                 onPress={() => navigation.navigate('BlockC')}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -174,41 +137,6 @@ function ChecklistHome({navigation}) {
                   />
                 </Svg>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: '#4F90DD',
-                  borderRadius: 8,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: 20,
-                  marginBottom: 20,
-                }}
-                onPress={() => navigation.navigate('BlockD')}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <Path
-                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                      fill="#fff"
-                    />
-                  </Svg>
-                  <Text
-                    style={{
-                      color: '#fff',
-                      fontFamily: 'Montserrat-SemiBold',
-                      fontSize: 18,
-                      marginLeft: 12,
-                    }}>
-                    Block D
-                  </Text>
-                </View>
-                <Svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                  <Path
-                    d="M9.29 6.71a1 1 0 0 1 1.42 0l4 4a1 1 0 0 1 0 1.42l-4 4a1 1 0 1 1-1.42-1.42L12.59 12l-3.3-3.29a1 1 0 0 1 0-1.42z"
-                    fill="#fff"
-                  />
-                </Svg>
-              </TouchableOpacity>
             </View>
           </View>
         </SafeAreaView>
@@ -224,9 +152,7 @@ const Checklist = () => {
       initialRouteName="ChecklistHome">
       <Stack.Screen name="ChecklistHome" component={ChecklistHome} />
       <Stack.Screen name="BlockA" component={BlockA} />
-      <Stack.Screen name="BlockB" component={BlockB} />
       <Stack.Screen name="BlockC" component={BlockC} />
-      <Stack.Screen name="BlockD" component={BlockD} />
       <Stack.Screen name="BoothDetail" component={AppliedDetails} />
     </Stack.Navigator>
   );
