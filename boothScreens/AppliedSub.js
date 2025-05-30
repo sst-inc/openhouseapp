@@ -49,16 +49,6 @@ const appliedSubjectsData = [
     image: require('../assets/layoutPics/Level1.png'),
     sstLoc: 'L1 Block C',
   },
-  {
-    id: '4',
-    type: 'Applied Subjects',
-    header: 'Design Studies',
-    description:
-      "The Design Studies Applied Subject explores design thinking and processes, focusing on visual communication, interior and exhibition space, and architectural design. Performance tasks foster awareness of design's connection to various disciplines. Through practical activities, students develop creative mindsets, critical thinking, and analytical skills. They also gain competencies in visual and oral communication, digital design techniques, project management, and time management, building confidence and purpose in resolving design briefs.",
-    location: 'Maker Lab',
-    image: require('../assets/layoutPics/MakerLab.png'),
-    sstLoc: 'L3 Block C',
-  },
 ];
 
 const AppliedSub = () => {

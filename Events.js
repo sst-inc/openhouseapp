@@ -167,7 +167,7 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const EventsPage = ({navigation}) => {
   const renderItem = ({item}) => <FlatListItem item={item} />;
-  
+
   // Schedule post-event survey notifications
   useEffect(() => {
     schedulePostEventSurveyNotifications();
@@ -182,7 +182,7 @@ const EventsPage = ({navigation}) => {
         type: TriggerType.TIMESTAMP,
         timestamp: surveyDate1.getTime(),
       };
-      
+
       // Second notification on June 1st at 1:15 PM
       const surveyDate2 = new Date(2025, 5, 1, 13, 15, 0); // June = 5
       const trigger2 = {
@@ -211,7 +211,7 @@ const EventsPage = ({navigation}) => {
         },
         trigger1,
       );
-      
+
       // Schedule second notification
       await notifee.createTriggerNotification(
         {
@@ -224,13 +224,13 @@ const EventsPage = ({navigation}) => {
         },
         trigger2,
       );
-      
+
       console.log('Post-event survey notifications scheduled successfully');
     } catch (error) {
       console.error('Error scheduling survey notifications:', error);
     }
   };
-  
+
   const carouselItems = [
     {
       id: '1',

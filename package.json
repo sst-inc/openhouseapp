@@ -1,6 +1,6 @@
 {
   "name": "sstopenhouse",
-  "version": "1.1",
+  "version": "1.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -41,7 +41,6 @@
     "react-native-shadow": "^1.2.2",
     "react-native-svg": "^15.0.0",
     "react-native-vector-icons": "^10.1.0",
-    "react-native-version": "^4.0.0",
     "toastify-react-native": "^5.0.0"
   },
   "devDependencies": {
@@ -58,6 +57,7 @@
     "eslint": "^8.19.0",
     "jest": "^29.6.3",
     "prettier": "2.8.8",
+    "react-native-version": "^4.0.0",
     "react-test-renderer": "18.2.0",
     "typescript": "5.0.4"
   },
