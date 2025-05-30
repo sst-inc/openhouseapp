@@ -77,8 +77,8 @@ const data = [
     description:
       'Join our School Leaders and various academic staff in a conversation to find out more about the SST curriculum and opportunities that students are presented with!',
     location: 'Auditorium',
-    image: require('../assets/layoutPics/Level5.png'),
-    sstLoc: 'L5 Block A',
+    image: require('../assets/layoutPics/Level4.png'),
+    sstLoc: 'L4 Block A',
   },
   {
     id: '3',
